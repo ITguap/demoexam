@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Мои заявления</title>
+</head>
+<body>
+
+<h1>Мои заявления</h1>
+<a th:href="@{/welcome}">Назад</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>номер авто</th>
+        <th>описание</th>
+        <th>статус</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="statement : ${statements}">
+        <td th:text="${statement.getCarNumber()}"></td>
+        <td th:text="${statement.getDescription()}"></td>
+        <td th:text="${statement.getStatus().getName()}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

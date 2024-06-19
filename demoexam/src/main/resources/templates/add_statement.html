@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить заявление</title>
+</head>
+<body>
+
+<h1>Добавить заявление</h1>
+<a th:href="@{/welcome}">Назад</a>
+
+<form th:action="@{/statements/add}" method="post">
+    <input type="text" name="carNumber" placeholder="номер авто">
+    <input type="text" name="description" placeholder="описание нарушения">
+    <input type="submit" value="Отправить">
+</form>
+
+</body>
+</html>

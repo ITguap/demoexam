@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Панель администратора</title>
+</head>
+<body>
+
+<h1>Панель администратора</h1>
+<a th:href="@{/welcome}">Назад</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>номер авто</th>
+        <th>описание</th>
+        <th>статус</th>
+        <th>действие</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="statement : ${statements}">
+        <td th:text="${statement.getId()}"></td>
+        <td th:text="${statement.getCarNumber()}"></td>
+        <td th:text="${statement.getDescription()}"></td>
+        <td th:text="${statement.getStatus().getName()}"></td>
+        <td th:if="${statement.getStatus().getName() == 'Новое'}">
+            <form th:action="@{/confirm}" method="post">
+                <input type="hidden" name="id" th:value="${statement.getId()}">
+                <input type="submit" value="Подтвердить">
+            </form>
+            <form th:action="@{/reject}" method="post">
+                <input type="hidden" name="id" th:value="${statement.getId()}">
+                <input type="submit" value="Отклонить">
+            </form>
+            <td>
+        <button><a th:href="@{/delete(id=${statement.id})}">Удалить</a></button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
